@@ -1,6 +1,6 @@
-version : '3.8'
+version: '3.8'
 
-services :
+services:
   web:
     build: .
     ports:
@@ -10,16 +10,15 @@ services :
     depends_on:
       - redis
 
-    redis:
-      image: redis:apline
-      volumes:
-      - redis-data:/data
-      networks:
-        - app-net
-    
+  redis:
+    image: redis:alpine
     volumes:
-     redis-data
-
+      - redis-data:/data
     networks:
-      app-net:
-      
+      - app-net
+
+volumes:
+  redis-data:
+
+networks:
+  app-net:
